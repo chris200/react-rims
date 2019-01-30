@@ -16,13 +16,18 @@ class Kpform extends React.Component{
   }
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
-      <label>
-      Kp Value:
-      <input type='number' value={this.state.value} onChange={this.handleChange} />
-      </label>
-      <input type='submit' value='Submit'/>
-      </form>
+
+      <form class='form-inline' onSubmit={this.handleSubmit}>
+            <div class='form-group'>
+              <label >
+                Kp Value:
+              </label>
+              <input type='number' value={this.state.value} onChange={this.handleChange} />
+              <input class='btn btn-primary' type='submit' value='Submit'/>
+            </div>
+
+
+    </form>
 
     );
   }
@@ -44,12 +49,19 @@ class Kiform extends React.Component{
   }
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
-      <label>
-      Kp Value:
-      <input type='number' value={this.state.value} onChange={this.handleChange} />
-      </label>
-      <input type='submit' value='Submit'/>
+      <form class='form-inline' onSubmit={this.handleSubmit}>
+        <div class='form-group'>
+
+            <label>
+              Kp Value:
+            </label>
+
+            <input type='number' value={this.state.value} onChange={this.handleChange} />
+
+
+            <input class='btn btn-primary' type='submit' value='Submit'/>
+
+        </div>
       </form>
 
     );
@@ -72,13 +84,19 @@ class Kdform extends React.Component{
   }
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
-      <label>
-      Kd Value:
-      <input type='number' value={this.state.value} onChange={this.handleChange} />
-      </label>
-      <input type='submit' value='Submit'/>
-      </form>
+      <form class='form-inline' onSubmit={this.handleSubmit}>
+        <div class='form-group'>
+
+            <label>
+              Kd Value:
+            </label>
+
+            <input type='number' value={this.state.value} onChange={this.handleChange} />
+
+            <input class='btn btn-primary' type='submit' value='Submit'/>
+
+        </div>
+    </form>
 
     );
   }
@@ -100,13 +118,21 @@ class Targetform extends React.Component{
   }
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
-      <label>
-      Target Value:
-      <input type='number' value={this.state.value} onChange={this.handleChange} />
-      </label>
-      <input type='submit' value='Submit'/>
-      </form>
+      <form  class='form-inline' onSubmit={this.handleSubmit}>
+        <div class='form-group'>
+
+            <label for='targetvalue'>
+            Target Value:
+            </label>
+
+
+            <input type='number' id='targetvalue' value={this.state.value} onChange={this.handleChange} />
+
+
+            <input class='btn btn-primary' type='submit' value='Submit'/>
+
+    </div>
+    </form>
 
     );
   }
