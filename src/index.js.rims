@@ -1,0 +1,110 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const name='Chris';
+class Greeting extends React.Component {
+
+  render() {
+    return <h1 >Hello, {name}</h1>;
+
+  }
+}
+
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {Kp: '',
+									Ki:'',
+									Kd:''};
+									this.handleInputChange = this.handleInputChange.bind(this);
+
+    //this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInputChange(event) {
+		const target=event.target;
+		const value=target.value;
+		const name=target.name;
+
+    this.setState({[name]:value
+		});
+  }
+
+  handleSubmit(event) {
+    alert('A Kp was submitted: ' + this.state.Kp);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form >
+        <label>
+          Kp Value:</label>
+          <input name='Kp' type="text" value={this.state.Kp} onChange={this.handleInputChange} />
+        <br></br>
+				<label>
+					Ki Value:
+					<input name='Ki' type="text" value={this.state.Ki} onChange={this.handleInputChange} />
+				</label><br></br>
+				<label>
+					Kd Value:
+					<input name='Kd' type="text" value={this.state.Kd} onChange={this.handleInputChange} />
+				</label><br></br>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    data:[],
+    };
+  }
+//https://stackoverflow.com/questions/49725012/handling-response-status-using-fetch-in-react-js
+  componentDidMount() {
+    fetch("http://192.168.86.109/react-rims/api/kpvalues/read.php")
+    .then((response) => {
+  if(!response.ok) throw new Error(response.status);
+  else return response=> response.json();
+})
+.then((data) => {
+  this.setState({ isLoading: false, downlines: data.response });
+  console.log("DATA STORED");
+  console.log(JSON.stringify(this.state.kpvalue));
+})
+.catch((error) => {
+  console.log('error: ' + error);
+  this.setState({ requestFailed: true });
+});
+
+  }
+
+  render() {
+    const{isLoading, requestFailed} =this.state;
+    if(requestFailed){
+      return(
+        <div className="errorContainer">
+        <a className="errorMessage">Something Went Wrong </a>
+      </div>
+    )
+    }else{
+      return(
+        <div className="errorContainer">
+        <a className="errorMessage">It works </a>{JSON.stringify(this.state.downlines)}
+      </div>
+      )
+    }
+  }
+
+  }
+
+
+
+
+ReactDOM.render(
+  <MyComponent />,
+  document.getElementById('root') );
