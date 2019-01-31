@@ -1,5 +1,5 @@
 import React from 'react';
-
+import fetch from 'isomorphic-fetch';
 class Kpform extends React.Component{
   constructor(props){
     super(props);
@@ -17,13 +17,13 @@ class Kpform extends React.Component{
   render(){
     return(
 
-      <form class='form-inline' onSubmit={this.handleSubmit}>
-            <div class='form-group'>
+      <form className='form-inline' onSubmit={this.handleSubmit}>
+            <div className='form-group'>
               <label >
                 Kp Value:
               </label>
               <input type='number' value={this.state.value} onChange={this.handleChange} />
-              <input class='btn btn-primary' type='submit' value='Submit'/>
+              <input className='btn btn-primary' type='submit' value='Submit'/>
             </div>
 
 
@@ -49,8 +49,8 @@ class Kiform extends React.Component{
   }
   render(){
     return(
-      <form class='form-inline' onSubmit={this.handleSubmit}>
-        <div class='form-group'>
+      <form className='form-inline' onSubmit={this.handleSubmit}>
+        <div className='form-group'>
 
             <label>
               Kp Value:
@@ -59,7 +59,7 @@ class Kiform extends React.Component{
             <input type='number' value={this.state.value} onChange={this.handleChange} />
 
 
-            <input class='btn btn-primary' type='submit' value='Submit'/>
+            <input className='btn btn-primary' type='submit' value='Submit'/>
 
         </div>
       </form>
@@ -84,8 +84,8 @@ class Kdform extends React.Component{
   }
   render(){
     return(
-      <form class='form-inline' onSubmit={this.handleSubmit}>
-        <div class='form-group'>
+      <form className='form-inline' onSubmit={this.handleSubmit}>
+        <div className='form-group'>
 
             <label>
               Kd Value:
@@ -93,7 +93,7 @@ class Kdform extends React.Component{
 
             <input type='number' value={this.state.value} onChange={this.handleChange} />
 
-            <input class='btn btn-primary' type='submit' value='Submit'/>
+            <input className='btn btn-primary' type='submit' value='Submit'/>
 
         </div>
     </form>
@@ -105,23 +105,46 @@ class Kdform extends React.Component{
 class Targetform extends React.Component{
   constructor(props){
     super(props);
-    this.state={value:''};
+    this.state={data:{'temp':''}};
     this.handleChange=this.handleChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
   }
   handleChange(event){
-    this.setState({value:event.target.value});
+    this.setState({'data':{'target':event.target.value}});
   }
   handleSubmit(event){
-    alert("Target was submitted: " + this.state.value);
+    const {data}=this.state;
+    var form_data={
+      temp:this.state.data,
+    };
+    console.log({form_data});
+    fetch('/api/targettemp/create.php', {
+            method: 'POST',
+            mode: 'no-cors',
+            body: {targettemperature:10},
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {
+            return res;
+            console.log(res);
+        }).catch(err => {
+          console.log(err)});
+
+
+
+  //  alert("Target was submitted: " + JSON.stringify({target}));
+
+
+
     event.preventDefault();
   }
   render(){
     return(
-      <form  class='form-inline' onSubmit={this.handleSubmit}>
-        <div class='form-group'>
+      <form id='target' className='form-inline' onSubmit={this.handleSubmit}>
+        <div className='form-group'>
 
-            <label for='targetvalue'>
+            <label >
             Target Value:
             </label>
 
@@ -129,7 +152,7 @@ class Targetform extends React.Component{
             <input type='number' id='targetvalue' value={this.state.value} onChange={this.handleChange} />
 
 
-            <input class='btn btn-primary' type='submit' value='Submit'/>
+            <input className='btn btn-primary' type='submit' value='Submit'/>
 
     </div>
     </form>
@@ -137,5 +160,9 @@ class Targetform extends React.Component{
     );
   }
 }
+
+
+
+
 
 export  {Kpform, Kiform, Kdform,Targetform};

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const API = "http://192.168.86.109/react-rims/api/kpvalues/read.php";
+const API = "/api/kpvalues/read.php";
 
 class FetcherKp extends React.Component {
   constructor(props) {

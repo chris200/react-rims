@@ -1,6 +1,6 @@
 import React from 'react';
 
-const API = "http://192.168.86.109/react-rims/api/kdvalues/read.php";
+const API = "/api/kdvalues/read.php";
 
 class FetcherKd extends React.Component {
   constructor(props) {
@@ -29,6 +29,7 @@ componentDidMount() {
     }
 return(
   <div>
+
     KdValue: {outputKd.kdvalue}
   </div>);
 

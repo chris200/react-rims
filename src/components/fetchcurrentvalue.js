@@ -1,6 +1,6 @@
 import React from 'react';
 
-const API = "http://192.168.86.109/react-rims/api/currentvalues/read.php";
+const API = "/api/currentvalues/read.php";
 
 class FetcherCurrent extends React.Component {
   constructor(props) {
