@@ -47,7 +47,7 @@ this.setState({'data':{'kpvalue':event.target.value}});
       <form className='form-inline' onSubmit={this.handleSubmit}>
             <div className='form-group'>
               <label >
-                Kp Value:
+                Kp Input:
               </label>
               <input type='number' id='kpvalue' value={this.state.value} onChange={this.handleChange} />
               <input className='btn btn-primary' type='submit' value='Submit'/>
@@ -106,7 +106,7 @@ class Kiform extends React.Component{
         <div className='form-group'>
 
             <label>
-              Ki Value:
+              Ki Input:
             </label>
 
             <input type='number' id='kivalue' value={this.state.value} onChange={this.handleChange} />

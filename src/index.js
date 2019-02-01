@@ -5,6 +5,7 @@ import FetcherKi from './components/fetchkivalue';
 import FetcherKd from './components/fetchkdvalue';
 import FetcherTarget from './components/fetchtargetvalue';
 import FetcherCurrent from './components/fetchcurrentvalue';
+import Timer from './components/timer';
 import {Kpform, Kiform, Kdform,Targetform} from './components/forms';
 
 
@@ -22,7 +23,8 @@ class Kvalues extends React.Component {
           <FetcherKi />
           <FetcherKd />
           <FetcherTarget />
-          <FetcherCurrent />
+     <FetcherCurrent />
+      
           <Kpform />
           <Kiform />
           <Kdform />
@@ -37,6 +39,6 @@ class Kvalues extends React.Component {
 
 
 ReactDOM.render(
-  // <Testkpfetch />,
+
   <Kvalues />,
   document.getElementById('root') );

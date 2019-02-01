@@ -1,6 +1,10 @@
 import React from 'react';
+import Time from 'react-time-format'
 
 const API = "/api/currentvalues/read.php";
+
+
+
 
 class FetcherCurrent extends React.Component {
   constructor(props) {
@@ -9,27 +13,54 @@ class FetcherCurrent extends React.Component {
     this.state = {
       output: [],
       isLoading:false,
+      currentstatus:true,
+      date: new Date()
     };
 
   }
 //https://www.robinwieruch.de/react-fetching-data/#react-where-fetch-data
 componentDidMount() {
-  this.setState({isLoading:true});
+
+this.timerID=setInterval(
+    () => this.tick(),
+    5000
+    );
   fetch(API)
     .then(response => response.json())
     .then(data => this.setState({output: data,isLoading:false}));
+    //console.log("did m");
+  }
 
 
-}
-
-  render() {
-    const {output, isLoading}=this.state;
-    if(isLoading){
-      return <div>Loading</div>
+componentWillUnmount(){
+  clearInterval(this.timerID);
+  //console.log("did u");
+  }
+tick(){
+    this.setState({currentstatus:false});
+    this.setState({
+      date:new Date()
+    });
+    fetch(API)
+      .then(response => response.json())
+      .then(data => this.setState({output: data,isLoading:false}));
     }
+
+
+render() {
+    const {output, isLoading, currentstatus, date}=this.state;
+    if(isLoading){
+      return <div>Loading...</div>
+    }
+    // if(currentstatus){
+    //   return <div>CurrentStatus True</div>
+    // }
+    // if(!currentstatus){
+    //   return <div>CurrentStatus False</div>
+    // }
 return(
   <div>
-    Current Temperature: {output.temperature}
+     {this.state.date.toLocaleTimeString()} Current Temperature: {output.temperature} Time <Time value={output.currentTimestamp} format="YYYY-MM-DD hh:mm:ss" />
   </div>);
 
   }
