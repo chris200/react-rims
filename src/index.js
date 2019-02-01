@@ -16,64 +16,23 @@ class Kvalues extends React.Component {
     return(
     <div className=" well">
 
-      <div className='row'>
-        <div className='col-md-3'>
+
+
           <FetcherKp />
-        </div>
-        <div className='col-md-9'>
+          <FetcherKi />
+          <FetcherKd />
+          <FetcherTarget />
+          <FetcherCurrent />
           <Kpform />
-        </div>
-    </div>
-
-    <div className='row'>
-      <div className='col-md-3'>
-        <FetcherKi />
-      </div>
-      <div className='col-md-9'>
-        <Kiform />
-      </div>
-    </div>
-
-    <div className='row'>
-      <div className='col-md-3'>
-        <FetcherKd />
-      </div>
-      <div className='col-md-9'>
-      <Kdform />
-      </div>
-    </div>
-
-    <div className='row'>
-      <div className='col-md-3'>
-       <FetcherTarget />
-      </div>
-      <div className='col-md-9'>
-      <Targetform />
-      </div>
-    </div>
-
-    <div className='row'>
-      <div className='col-md-3'>
-      <FetcherCurrent />
-      </div>
-      <div className='col-md-9'>
-
-      </div>
-    </div>
+          <Kiform />
+          <Kdform />
+          <Targetform />
 
     </div>
     )
   }
 };
-class Header extends React.Component {
-   render() {
-      return (
-         <div>
-            <h1>Header</h1>
-         </div>
-      );
-   }
-}
+
 
 
 

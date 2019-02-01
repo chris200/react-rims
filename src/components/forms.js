@@ -1,17 +1,44 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
+
 class Kpform extends React.Component{
   constructor(props){
     super(props);
-    this.state={value:''};
+    this.state={data:{'kpvalue':''}};
     this.handleChange=this.handleChange.bind(this);
-    this.handleSubmit=this.handleSubmit.bind(this);
+    this.handleSubmit=this.handleSubmit.bind(this);;
   }
   handleChange(event){
-    this.setState({value:event.target.value});
+this.setState({'data':{'kpvalue':event.target.value}});
   }
   handleSubmit(event){
-    alert("Kp was submitted: " + this.state.value);
+    const {data}=this.state;
+    const form_data=this.state.data;
+    // var form_data={
+    //   targettemperature:this.state.data,
+    // };
+    console.log({form_data});
+      console.log({data});
+
+    fetch('/api/kpvalues/create.php', {
+            method: 'POST',
+
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+
+        }).then(response => response.json())
+        .catch(err => {
+          //console.log(err)
+        });
+
+
+
+  //  alert("Target was submitted: " + JSON.stringify({target}));
+
+
+
     event.preventDefault();
   }
   render(){
@@ -22,7 +49,7 @@ class Kpform extends React.Component{
               <label >
                 Kp Value:
               </label>
-              <input type='number' value={this.state.value} onChange={this.handleChange} />
+              <input type='number' id='kpvalue' value={this.state.value} onChange={this.handleChange} />
               <input className='btn btn-primary' type='submit' value='Submit'/>
             </div>
 
@@ -36,15 +63,41 @@ class Kpform extends React.Component{
 class Kiform extends React.Component{
   constructor(props){
     super(props);
-    this.state={value:''};
+    this.state={data:{'kivalue':''}};
     this.handleChange=this.handleChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
   }
   handleChange(event){
-    this.setState({value:event.target.value});
+      this.setState({'data':{'kivalue':event.target.value}});
   }
   handleSubmit(event){
-    alert("Ki was submitted: " + this.state.value);
+    const {data}=this.state;
+    const form_data=this.state.data;
+    // var form_data={
+    //   targettemperature:this.state.data,
+    // };
+    console.log({form_data});
+      console.log({data});
+
+    fetch('/api/kivalues/create.php', {
+            method: 'POST',
+
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+
+        }).then(response => response.json())
+        .catch(err => {
+          //console.log(err)
+        });
+
+
+
+  //  alert("Target was submitted: " + JSON.stringify({target}));
+
+
+
     event.preventDefault();
   }
   render(){
@@ -53,10 +106,10 @@ class Kiform extends React.Component{
         <div className='form-group'>
 
             <label>
-              Kp Value:
+              Ki Value:
             </label>
 
-            <input type='number' value={this.state.value} onChange={this.handleChange} />
+            <input type='number' id='kivalue' value={this.state.value} onChange={this.handleChange} />
 
 
             <input className='btn btn-primary' type='submit' value='Submit'/>
@@ -71,27 +124,54 @@ class Kiform extends React.Component{
 class Kdform extends React.Component{
   constructor(props){
     super(props);
-    this.state={value:''};
+    this.state={data:{'kdvalue':''}};
     this.handleChange=this.handleChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
   }
   handleChange(event){
-    this.setState({value:event.target.value});
+    this.setState({'data':{'kdvalue':event.target.value}});
   }
+
   handleSubmit(event){
-    alert("Kd was submitted: " + this.state.value);
+    const {data}=this.state;
+    const form_data=this.state.data;
+    // var form_data={
+    //   targettemperature:this.state.data,
+    // };
+    console.log({form_data});
+      console.log({data});
+
+    fetch('/api/kdvalues/create.php', {
+            method: 'POST',
+
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+
+        }).then(response => response.json())
+        .catch(err => {
+          //console.log(err)
+        });
+
+
+
+  //  alert("Target was submitted: " + JSON.stringify({target}));
+
+
+
     event.preventDefault();
   }
   render(){
     return(
-      <form className='form-inline' onSubmit={this.handleSubmit}>
+      <form id='kd' className='form-inline' onSubmit={this.handleSubmit}>
         <div className='form-group'>
 
             <label>
-              Kd Value:
+              Kd Input:
             </label>
 
-            <input type='number' value={this.state.value} onChange={this.handleChange} />
+            <input type='number' id='kdvalue' value={this.state.value} onChange={this.handleChange} />
 
             <input className='btn btn-primary' type='submit' value='Submit'/>
 
@@ -105,30 +185,31 @@ class Kdform extends React.Component{
 class Targetform extends React.Component{
   constructor(props){
     super(props);
-    this.state={data:{'temp':''}};
+    this.state={data:{'targettemperature':''}};
     this.handleChange=this.handleChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
   }
   handleChange(event){
-    this.setState({'data':{'target':event.target.value}});
+    this.setState({'data':{'targettemperature':event.target.value}});
   }
   handleSubmit(event){
     const {data}=this.state;
-    var form_data={
-      temp:this.state.data,
-    };
+    const form_data=this.state.data;
+    // var form_data={
+    //   targettemperature:this.state.data,
+    // };
     console.log({form_data});
-    fetch('/api/targettemp/create.php', {
+
+    fetch('/api/targetvalues/create.php', {
             method: 'POST',
-            mode: 'no-cors',
-            body: {targettemperature:10},
+
             headers: {
                 'Content-Type': 'application/json'
-            }
-        }).then(res => {
-            return res;
-            console.log(res);
-        }).catch(err => {
+            },
+            body: JSON.stringify(data)
+
+        }).then(response => response.json())
+        .catch(err => {
           console.log(err)});
 
 
