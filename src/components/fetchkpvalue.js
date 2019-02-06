@@ -2,13 +2,15 @@ import React from 'react';
 
 const API = "/api/kpvalues/read.php";
 
+
+
 class FetcherKp extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       outputKp: [],
-      isLoading:false,
+
     };
 
   }
@@ -17,21 +19,31 @@ componentDidMount() {
   this.setState({isLoading:true});
   fetch(API)
     .then(response => response.json())
-    .then(data => this.setState({outputKp: data,isLoading:false}));
+    .then(data => this.setState({outputKp: data, 'isLoading':false}));
 
 
 }
 
   render() {
     const {outputKp, isLoading}=this.state;
+
     if(isLoading){
-      return <div>Loading</div>
+      console.log({isLoading});
+      return(
+
+        <div>Loading</div>
+        )
+    }else{
+      const isLoading=false;
+      console.log({isLoading});
+    return(
+
+    <div>
+      KpValue:{outputKp.kpvalue} isLoading: {JSON.stringify(isLoading)} 
+    </div>)
     }
-return(
-  <div>
-    KpValue: {outputKp.kpvalue}
-  </div>);
 
   }
 }
+
 export default FetcherKp;

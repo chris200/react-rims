@@ -1,6 +1,7 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
 
+
 class Kpform extends React.Component{
   constructor(props){
     super(props);
@@ -22,7 +23,6 @@ this.setState({'data':{'kpvalue':event.target.value}});
 
     fetch('/api/kpvalues/create.php', {
             method: 'POST',
-
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -46,11 +46,8 @@ this.setState({'data':{'kpvalue':event.target.value}});
 
       <form className='form-inline' onSubmit={this.handleSubmit}>
             <div className='form-group'>
-              <label >
-                Kp Input:
-              </label>
-              <input type='number' id='kpvalue' value={this.state.value} onChange={this.handleChange} />
-              <input className='btn btn-primary' type='submit' value='Submit'/>
+              <input type='number' id='kpvalue' value={this.state.value} placeholder='Kp' onChange={this.handleChange} />
+              <input className='btn btn-primary' type='submit' value='Update'/>
             </div>
 
 
@@ -104,15 +101,8 @@ class Kiform extends React.Component{
     return(
       <form className='form-inline' onSubmit={this.handleSubmit}>
         <div className='form-group'>
-
-            <label>
-              Ki Input:
-            </label>
-
-            <input type='number' id='kivalue' value={this.state.value} onChange={this.handleChange} />
-
-
-            <input className='btn btn-primary' type='submit' value='Submit'/>
+            <input type='number' id='kivalue' value={this.state.value} placeholder='Ki' onChange={this.handleChange} />
+            <input className='btn btn-primary' type='submit' value='Update'/>
 
         </div>
       </form>
@@ -138,8 +128,7 @@ class Kdform extends React.Component{
     // var form_data={
     //   targettemperature:this.state.data,
     // };
-    console.log({form_data});
-      console.log({data});
+
 
     fetch('/api/kdvalues/create.php', {
             method: 'POST',
@@ -167,13 +156,11 @@ class Kdform extends React.Component{
       <form id='kd' className='form-inline' onSubmit={this.handleSubmit}>
         <div className='form-group'>
 
-            <label>
-              Kd Input:
-            </label>
 
-            <input type='number' id='kdvalue' value={this.state.value} onChange={this.handleChange} />
 
-            <input className='btn btn-primary' type='submit' value='Submit'/>
+            <input type='number' id='kdvalue' value={this.state.value} placeholder='Kd' onChange={this.handleChange} />
+
+            <input className='btn btn-primary' type='submit' value='Update'/>
 
         </div>
     </form>
@@ -225,15 +212,13 @@ class Targetform extends React.Component{
       <form id='target' className='form-inline' onSubmit={this.handleSubmit}>
         <div className='form-group'>
 
-            <label >
-            Target Value:
-            </label>
 
 
-            <input type='number' id='targetvalue' value={this.state.value} onChange={this.handleChange} />
+
+            <input type='number' id='targetvalue'  placeholder='Target' value={this.state.value} onChange={this.handleChange} />
 
 
-            <input className='btn btn-primary' type='submit' value='Submit'/>
+            <input className='btn btn-primary' type='submit' value='Update'/>
 
     </div>
     </form>

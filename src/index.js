@@ -1,36 +1,21 @@
+
+import './style.css';
 import React  from 'react';
 import ReactDOM from 'react-dom';
-import FetcherKp from './components/fetchkpvalue';
-import FetcherKi from './components/fetchkivalue';
-import FetcherKd from './components/fetchkdvalue';
-import FetcherTarget from './components/fetchtargetvalue';
-import FetcherCurrent from './components/fetchcurrentvalue';
-import Timer from './components/timer';
-import {Kpform, Kiform, Kdform,Targetform} from './components/forms';
+import BasicExample from './basicexample';
+import './serial';
 
 
 
 
 
-class Kvalues extends React.Component {
+class Output extends React.Component {
   render(){
     return(
-    <div className=" well">
+
+          <BasicExample />
 
 
-
-          <FetcherKp />
-          <FetcherKi />
-          <FetcherKd />
-          <FetcherTarget />
-     <FetcherCurrent />
-      
-          <Kpform />
-          <Kiform />
-          <Kdform />
-          <Targetform />
-
-    </div>
     )
   }
 };
@@ -40,5 +25,5 @@ class Kvalues extends React.Component {
 
 ReactDOM.render(
 
-  <Kvalues />,
+  <Output />,
   document.getElementById('root') );
