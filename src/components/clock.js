@@ -4,6 +4,11 @@ class Clock extends React.Component {
          constructor(props) {
            super(props);
            this.state = { date: new Date()};
+           this.style={color:"red",
+             border:" solid 1px orange",
+             backgroundColor:"purple",
+
+           }
          }
 
          tick() {
@@ -26,7 +31,7 @@ class Clock extends React.Component {
 
          render() {
            return (
-             <div>
+             <div >
                {this.state.date.toLocaleTimeString()}
              </div>
            );

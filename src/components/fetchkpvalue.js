@@ -31,16 +31,16 @@ componentDidMount() {
       console.log({isLoading});
       return(
 
-        <div>Loading</div>
+        <span>Loading</span>
         )
     }else{
       const isLoading=false;
-      console.log({isLoading});
+    
     return(
 
-    <div>
-      KpValue:{outputKp.kpvalue} isLoading: {JSON.stringify(isLoading)} 
-    </div>)
+    <span>
+      {outputKp.kpvalue}
+    </span>)
     }
 
   }

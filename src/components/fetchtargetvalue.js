@@ -9,6 +9,7 @@ class FetcherTarget extends React.Component {
     this.state = {
       output: [],
       isLoading:false,
+      TT:"",
     };
 
   }
@@ -24,14 +25,16 @@ componentDidMount() {
 
   render() {
     const {output, isLoading}=this.state;
+   const TT = Number(output.targettemperature).toFixed(1);
+    //this.setState({'TT':{TT}})
     if(isLoading){
       return <div>Loading</div>
     }
 return(
-  <div>
-    Target Temperature: {output.targettemperature}
-  </div>);
+  <span>
+     {TT}
+  </span>);
 
   }
 }
-export default FetcherTarget;
+export default FetcherTarget ;

@@ -1,12 +1,24 @@
+@font-face {
+  font-family: 'Technology';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Technology.ttf');
+
+}
 
 
 
 
 
 .menu{
-  background-color: green;
 
 
+
+}
+
+.temperature{
+  font-family: "Technology", sans-serif;
+  font-size:2em;
 }
 
 #container{

@@ -3,15 +3,15 @@ import fetch from 'isomorphic-fetch';
 
 const API = "/api/targetvalues/read.php";
 
-function getData(){
-
-
-     this.setState({isLoading:true});
-     fetch(API)
-       .then(res => res.json())
-       .then(data => this.setState({outputTarget: data, 'isLoading':false}));
-
-   }
+// function getData(){
+//
+//
+//      this.setState({isLoading:true});
+//      fetch(API)
+//        .then(res => res.json())
+//        .then(data => this.setState({outputTarget: data, 'isLoading':false}));
+//
+//    }
 
 
 class Targetform extends React.Component{
@@ -20,7 +20,7 @@ class Targetform extends React.Component{
     this.state={data:{'targetvalue':''},outputTarget:{targetvalue:''}};
     this.handleChange=this.handleChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
-    getData=getData.bind(this);
+    // getData=getData.bind(this);
     }
 
 
@@ -63,7 +63,7 @@ this.setState({'isLoading':true});
 
           });
 
-          getData();
+          // getData();
     }
     render(){
     const {outputTarget, isLoading}=this.state;
@@ -87,7 +87,7 @@ this.setState({'isLoading':true});
 
         )
     }else{
-      const isLoading=false;
+      // const isLoading=false;
 
 
     return(

@@ -25,13 +25,13 @@ componentDidMount() {
   render() {
     const {outputKd, isLoading}=this.state;
     if(isLoading){
-      return <div>Loading</div>
+      return <span>Loading</span>
     }
 return(
-  <div>
+  <span>
 
-    KdValue: {outputKd.kdvalue}
-  </div>);
+    {outputKd.kdvalue}
+  </span>);
 
   }
 }

@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Technology';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Technology.ttf'); /* IE9 Compat Modes */
+
+}
+
+
+
 body {
   margin: 10px;
   padding: 10px;
@@ -6,6 +16,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+div {
+  margin:5px;
+  padding: 5px;
+
 }
 
 code {

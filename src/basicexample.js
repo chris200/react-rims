@@ -3,20 +3,22 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import  Pidsettings from './pidsettings.js'
 import  Running from './running.js'
+// import  Runningchart from './components/runningchart.js'
+import  Dygraphshow from './dygraph.js'
 
 function BasicExample() {
   return (
     <Router>
       <div>
-        <ul className='menu navigation-menu'>
-          <li role='presentation' className='active'>
-            <Link to="/">Running</Link>
+        <ul className='nav nav-tabs'>
+          <li role='presentation' className=' nav-item'>
+            <Link className="nav-link" to="/">Running</Link>
           </li>
-          <li>
-            <Link to="/pidsettings">Settings</Link>
+          <li className=' nav-item'>
+            <Link className="nav-link" to="/pidsettings">Settings</Link>
           </li>
-          <li>
-            <Link to="/topics">Topics</Link>
+          <li className=' nav-item'>
+            <Link className="nav-link" to="/chart">Chart</Link>
           </li>
         </ul>
 
@@ -24,7 +26,7 @@ function BasicExample() {
 
         <Route exact path="/" component={Home} />
         <Route path="/pidsettings" component={PidSettings} />
-        <Route path="/topics" component={Topics} />
+        <Route path="/chart" component={Chart} />
       </div>
     </Router>
   );
@@ -48,38 +50,18 @@ function PidSettings() {
   );
 }
 
-function Topics({ match }) {
+function Chart({ match }) {
   return (
     <div>
-      <h2>Topics</h2>
-      <ul>
-        <li>
-          <Link to={`${match.url}/rendering`}>Rendering with React</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/components`}>Components</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
-        </li>
-      </ul>
+      <h2>Chart</h2>
+      <Dygraphshow />
 
-      <Route path={`${match.path}/:topicId`} component={Topic} />
-      <Route
-        exact
-        path={match.path}
-        render={() => <h3>Please select a topic.</h3>}
-      />
+
+
     </div>
   );
 }
 
-function Topic({ match }) {
-  return (
-    <div>
-      <h3>{match.params.topicId}</h3>
-    </div>
-  );
-}
+
 
 export default BasicExample;

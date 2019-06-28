@@ -25,12 +25,12 @@ componentDidMount() {
   render() {
     const {outputKi, isLoading}=this.state;
     if(isLoading){
-      return <div>Loading</div>
+      return <span>Loading</span>
     }
 return(
-  <div>
-    KiValue: {outputKi.kivalue}
-  </div>);
+  <span>
+  {outputKi.kivalue}
+</span>);
 
   }
 }
